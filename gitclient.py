@@ -10,4 +10,9 @@ class GitClient(discord.Client):
             return
 
         if message.content.startswith("$hello"):
-            await message.channel.send("Hello!")
+            await message.channel.send("Hello! Git-Bot here.")
+
+    async def on_update_event(self, event : str, description : str, url : str, receipients : int):
+        await self.get_channel(receipients).send(f"Event: {event}, Description: {description}, Url: {url}, Receipients: {receipients}")
+
+    
